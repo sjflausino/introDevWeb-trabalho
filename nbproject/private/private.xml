@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/meus%20documentos/CURSOS/DW%20novo/fontesMVC/aplicacaoMVC/src/java/controller/admin/CategoriaController.java</file>
+            <file>file:/home/vertigo/PROJECT/INTRODUÇÃO_DEV_WEB/introDevWeb-trabalho/src/java/controller/admin/DashboardController.java</file>
+            <file>file:/home/vertigo/PROJECT/INTRODUÇÃO_DEV_WEB/introDevWeb-trabalho/src/java/filtro/filtroRestrito.java</file>
+            <file>file:/home/vertigo/PROJECT/INTRODUÇÃO_DEV_WEB/introDevWeb-trabalho/src/java/model/Conexao.java</file>
+            <file>file:/home/vertigo/PROJECT/INTRODUÇÃO_DEV_WEB/introDevWeb-trabalho/src/java/model/CategoriaDAO.java</file>
+            <file>file:/home/vertigo/PROJECT/INTRODUÇÃO_DEV_WEB/introDevWeb-trabalho/src/java/controller/admin/CategoriaController.java</file>
         </group>
     </open-files>
 </project-private>

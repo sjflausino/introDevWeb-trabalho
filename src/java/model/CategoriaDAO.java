@@ -97,7 +97,7 @@ public class CategoriaDAO implements Dao<Categoria> {
         ArrayList<Categoria> meusCategorias = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Categorias";
+            String selectSQL = "SELECT * FROM categorias";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
