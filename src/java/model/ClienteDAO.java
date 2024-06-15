@@ -100,7 +100,6 @@ public class ClienteDAO implements Dao<Cliente> {
         }
     }
 
-    @Override
     public void delete(Cliente cliente) {
         Conexao conexao = new Conexao();
         try {
@@ -113,5 +112,10 @@ public class ClienteDAO implements Dao<Cliente> {
         } finally {
             conexao.closeConexao();
         }
+    }
+
+    @Override
+    public void delete(int id) {
+        // TODO
     }
 }

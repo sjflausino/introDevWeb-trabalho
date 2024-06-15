@@ -8,7 +8,7 @@ package entidade;
  *
  * @author vertigo
  */
-public class Compras {
+public class Compra {
 
     private int id;
     private int quantidadeCompra;
@@ -18,7 +18,7 @@ public class Compras {
     private int idProduto;
     private int idComprador;
 
-    public Compras(int id, int quantidadeCompra, String dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
+    public Compra(int id, int quantidadeCompra, String dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
         this.id = id;
         this.quantidadeCompra = quantidadeCompra;
         this.dataCompra = dataCompra;
@@ -28,7 +28,7 @@ public class Compras {
         this.idComprador = idComprador;
     }
 
-    public Compras() {
+    public Compra() {
         this.id = 0;
         this.quantidadeCompra = 0;
         this.dataCompra = "";
