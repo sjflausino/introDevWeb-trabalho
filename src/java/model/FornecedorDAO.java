@@ -27,16 +27,16 @@ public class FornecedorDAO implements Dao<Fornecedor> {
 
             if (resultado != null) {
                 while (resultado.next()) {
-                    // fornecedor.setId(Integer.parseInt(resultado.getString("ID")));
-                    // fornecedor.setNome(resultado.getString("NOME"));
-                    // fornecedor.setCpf(resultado.getString("CPF"));
-                    // fornecedor.setEndereco(resultado.getString("ENDERECO"));
-                    // fornecedor.setBairro(resultado.getString("BAIRRO"));
-                    // fornecedor.setCidade(resultado.getString("CIDADE"));
-                    // fornecedor.setUf(resultado.getString("UF"));
-                    // fornecedor.setCep(resultado.getString("CEP"));
-                    // fornecedor.setTelefone(resultado.getString("TELEFONE"));
-                    // fornecedor.setEmail(resultado.getString("EMAIL"));
+                    fornecedor.setId(Integer.parseInt(resultado.getString("ID")));
+                    fornecedor.setRazaoSocial(resultado.getString("RAZAO_SOCIAL"));
+                    fornecedor.setCnpj(resultado.getString("CNPJ"));
+                    fornecedor.setEndereco(resultado.getString("ENDERECO"));;
+                    fornecedor.setBairro(resultado.getString("BAIRRO"));
+                    fornecedor.setCidade(resultado.getString("CIDADE"));
+                    fornecedor.setUf(resultado.getString("UF"));
+                    fornecedor.setCep(resultado.getString("CEP"));
+                    fornecedor.setTelefone(resultado.getString("TELEFONE"));
+                    fornecedor.setEmail(resultado.getString("EMAIL"));
                 }
             }
             return fornecedor;
@@ -53,16 +53,16 @@ public class FornecedorDAO implements Dao<Fornecedor> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Fornecedores (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
-            // sql.setString(1, fornecedor.getNome());
-            // sql.setString(2, fornecedor.getCpf());
-            // sql.setString(3, fornecedor.getEndereco());
-            // sql.setString(4, fornecedor.getBairro());
-            // sql.setString(5, fornecedor.getCidade());
-            // sql.setString(6, fornecedor.getUf());
-            // sql.setString(7, fornecedor.getCep());
-            // sql.setString(8, fornecedor.getTelefone());
-            // sql.setString(9, fornecedor.getEmail());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Fornecedores (razaoSocial, cnpj, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
+            sql.setString(1, fornecedor.getRazaoSocial());
+            sql.setString(2, fornecedor.getCnpj());
+            sql.setString(3, fornecedor.getEndereco());
+            sql.setString(4, fornecedor.getBairro());
+            sql.setString(5, fornecedor.getCidade());
+            sql.setString(6, fornecedor.getUf());
+            sql.setString(7, fornecedor.getCep());
+            sql.setString(8, fornecedor.getTelefone());
+            sql.setString(9, fornecedor.getEmail());
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de insert (comentario) incorreta");
@@ -81,16 +81,16 @@ public class FornecedorDAO implements Dao<Fornecedor> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Fornecedores SET nome = ?, cpf = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ? ");
-            // sql.setString(1, fornecedor.getNome());
-            // sql.setString(2, fornecedor.getCpf());
-            // sql.setString(3, fornecedor.getEndereco());
-            // sql.setString(4, fornecedor.getBairro());
-            // sql.setString(5, fornecedor.getCidade());
-            // sql.setString(6, fornecedor.getUf());
-            // sql.setString(7, fornecedor.getCep());
-            // sql.setString(8, fornecedor.getTelefone());
-            // sql.setString(9, fornecedor.getEmail());
-            // sql.setInt(10, fornecedor.getId());
+            sql.setString(1, fornecedor.getRazaoSocial());
+            sql.setString(2, fornecedor.getCnpj());
+            sql.setString(3, fornecedor.getEndereco());
+            sql.setString(4, fornecedor.getBairro());
+            sql.setString(5, fornecedor.getCidade());
+            sql.setString(6, fornecedor.getUf());
+            sql.setString(7, fornecedor.getCep());
+            sql.setString(8, fornecedor.getTelefone());
+            sql.setString(9, fornecedor.getEmail());
+            sql.setInt(10, fornecedor.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {

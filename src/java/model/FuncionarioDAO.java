@@ -27,16 +27,12 @@ public class FuncionarioDAO implements Dao<Funcionario> {
 
             if (resultado != null) {
                 while (resultado.next()) {
-                    // funcionario.setId(Integer.parseInt(resultado.getString("ID")));
-                    // funcionario.setNome(resultado.getString("NOME"));
-                    // funcionario.setCpf(resultado.getString("CPF"));
-                    // funcionario.setEndereco(resultado.getString("ENDERECO"));
-                    // funcionario.setBairro(resultado.getString("BAIRRO"));
-                    // funcionario.setCidade(resultado.getString("CIDADE"));
-                    // funcionario.setUf(resultado.getString("UF"));
-                    // funcionario.setCep(resultado.getString("CEP"));
-                    // funcionario.setTelefone(resultado.getString("TELEFONE"));
-                    // funcionario.setEmail(resultado.getString("EMAIL"));
+                    funcionario.setId(Integer.parseInt(resultado.getString("ID")));
+                    funcionario.setNome(resultado.getString("NOME"));
+                    funcionario.setCpf(resultado.getString("CPF"));
+                    funcionario.setSenha(resultado.getString("SENHA"));
+                    funcionario.setEmail(resultado.getString("EMAIL"));
+                    funcionario.setTipo(resultado.getString("TIPO"));
                 }
             }
             return funcionario;
