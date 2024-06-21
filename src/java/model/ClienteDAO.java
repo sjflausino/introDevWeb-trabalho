@@ -132,7 +132,7 @@ public class ClienteDAO implements Dao<Cliente> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException("Query de delete (cliente) incorreta");
         } finally {
             conexao.closeConexao();
         }

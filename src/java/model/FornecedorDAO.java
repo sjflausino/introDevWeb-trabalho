@@ -132,7 +132,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException("Query de delete (fornecedor) incorreta");
         } finally {
             conexao.closeConexao();
         }
