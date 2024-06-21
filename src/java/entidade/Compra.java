@@ -1,18 +1,18 @@
 package entidade;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Compra {
 
     private int id;
     private int quantidadeCompra;
-    private Calendar dataCompra;
+    private Date dataCompra;
     private double valorCompra;
     private int idFornecedor;
     private int idProduto;
     private int idComprador;
 
-    public Compra(int id, int quantidadeCompra, Calendar dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
+    public Compra(int id, int quantidadeCompra, Date dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
         this.id = id;
         this.quantidadeCompra = quantidadeCompra;
         this.dataCompra = dataCompra;
@@ -25,7 +25,7 @@ public class Compra {
     public Compra() {
         this.id = 0;
         this.quantidadeCompra = 0;
-        // this.dataCompra = "";
+        this.dataCompra = null;
         this.valorCompra = 0;
         this.idFornecedor = 0;
         this.idProduto = 0;
@@ -40,7 +40,7 @@ public class Compra {
         return quantidadeCompra;
     }
 
-    public Calendar getDataCompra() {
+    public Date getDataCompra() {
         return dataCompra;
     }
 
@@ -68,7 +68,7 @@ public class Compra {
         this.quantidadeCompra = quantidadeCompra;
     }
 
-    public void setDataCompra(Calendar dataCompra) {
+    public void setDataCompra(Date dataCompra) {
         this.dataCompra = dataCompra;
     }
 

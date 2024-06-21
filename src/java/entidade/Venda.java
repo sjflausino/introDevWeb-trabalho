@@ -1,16 +1,17 @@
 package entidade;
+import java.util.Date;
 
 public class Venda {
 
     private int id;
     private int quantidadeVenda;
-    private String dataVenda;
+    private Date dataVenda;
     private double valorVenda;
     private int idCliente;
     private int idProduto;
     private int idVendedor;
 
-    public Venda(int id, int quantidadeVenda, String dataVenda, double valorVenda, int idCliente, int idProduto, int idVendedor) {
+    public Venda(int id, int quantidadeVenda, Date dataVenda, double valorVenda, int idCliente, int idProduto, int idVendedor) {
         this.id = id;
         this.quantidadeVenda = quantidadeVenda;
         this.dataVenda = dataVenda;
@@ -23,7 +24,7 @@ public class Venda {
     public Venda() {
         this.id = 0;
         this.quantidadeVenda = 0;
-        this.dataVenda = "";
+        this.dataVenda = null;
         this.valorVenda = 0;
         this.idCliente = 0;
         this.idProduto = 0;
@@ -38,7 +39,7 @@ public class Venda {
         return quantidadeVenda;
     }
 
-    public String getDataVenda() {
+    public Date getDataVenda() {
         return dataVenda;
     }
 
@@ -66,7 +67,7 @@ public class Venda {
         this.quantidadeVenda = quantidadeVenda;
     }
 
-    public void setDataVenda(String dataVenda) {
+    public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
 
