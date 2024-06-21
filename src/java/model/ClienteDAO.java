@@ -21,7 +21,7 @@ public class ClienteDAO implements Dao<Cliente> {
         Conexao conexao = new Conexao();
         try {
             Cliente cliente = new Cliente();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Clientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM clientes WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -53,7 +53,7 @@ public class ClienteDAO implements Dao<Cliente> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Clientes (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO clientes (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
             sql.setString(1, cliente.getNome());
             sql.setString(2, cliente.getCpf());
             sql.setString(3, cliente.getEndereco());
@@ -103,7 +103,7 @@ public class ClienteDAO implements Dao<Cliente> {
     public void delete(Cliente cliente) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Clientes WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM clientes WHERE ID = ? ");
             sql.setInt(1, cliente.getId());
             sql.executeUpdate();
 

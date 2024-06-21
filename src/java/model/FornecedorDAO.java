@@ -21,7 +21,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
         Conexao conexao = new Conexao();
         try {
             Fornecedor fornecedor = new Fornecedor();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Fornecedores WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM fornecedores WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -53,7 +53,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Fornecedores (razaoSocial, cnpj, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO fornecedores (razao_social, cnpj, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
             sql.setString(1, fornecedor.getRazaoSocial());
             sql.setString(2, fornecedor.getCnpj());
             sql.setString(3, fornecedor.getEndereco());
@@ -80,7 +80,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
     public void update(Fornecedor fornecedor) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Fornecedores SET nome = ?, cpf = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE fornecedores SET razao_social = ?, cnpj = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ? ");
             sql.setString(1, fornecedor.getRazaoSocial());
             sql.setString(2, fornecedor.getCnpj());
             sql.setString(3, fornecedor.getEndereco());
@@ -103,7 +103,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
     public void delete(Fornecedor fornecedor) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Fornecedores WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM fornecedores WHERE ID = ? ");
             sql.setInt(1, fornecedor.getId());
             sql.executeUpdate();
 

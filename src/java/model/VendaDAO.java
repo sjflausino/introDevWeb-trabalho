@@ -28,13 +28,12 @@ public class VendaDAO implements Dao<Venda> {
             if (resultado != null) {
                 while (resultado.next()) {
                     venda.setId(Integer.parseInt(resultado.getString("ID")));
-                    venda.setQuantidadeVenda(resultado.getString("QUANTIDADE_VENDA"));
+                    venda.setQuantidadeVenda(Integer.parseInt(resultado.getString("QUANTIDADE_VENDA")));
                     venda.setDataVenda(resultado.getString("DATA_VENDA"));
-                    venda.setValorVenda(resultado.getString("VALOR_VENDA"));
-                    venda.setIdCliente(resultado.getString("ID_CLIENTE"));
-                    venda.setIdProduto(resultado.getString("ID_PRODUTO"));
-                    venda.setIdVendedor(resultado.getString("ID_VENDEDOR"));
-
+                    venda.setValorVenda(Integer.parseInt(resultado.getString("VALOR_VENDA")));
+                    venda.setIdCliente(resultado.getInt("ID_CLIENTE"));
+                    venda.setIdProduto(Integer.parseInt(resultado.getString("ID_PRODUTO")));
+                    venda.setIdVendedor(Integer.parseInt(resultado.getString("ID_VENDEDOR")));
                 }
             }
             return venda;
@@ -51,13 +50,13 @@ public class VendaDAO implements Dao<Venda> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Vendas (quantidadeVenda, dataVenda, valorVenda, idCliente, idProduto, idVendedor ) VALUES (?,?,?,?,?,?)");
-            sql.setString(1, venda.getQuantidadeVenda()); 
-            sql.setString(2, venda.getDataVenda());
-            sql.setString(3, venda.getValorVenda());
-            sql.setString(4, venda.getIdCliente());
-            sql.setString(5, venda.getIdProduto());
-            sql.setString(6, venda.getIdVendedor());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Vendas (quantidade_venda, data_venda, valor_venda, id_cliente, id_produto, id_vendedor ) VALUES (?,?,?,?,?,?)");
+            sql.setInt(1, venda.getQuantidadeVenda());
+            // sql.setString(2, venda.getDataVenda());
+            sql.setDouble(3, venda.getValorVenda());
+            sql.setInt(4, venda.getIdCliente());
+            sql.setInt(5, venda.getIdProduto());
+            sql.setInt(6, venda.getIdVendedor());
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de insert (comentario) incorreta");
@@ -76,12 +75,12 @@ public class VendaDAO implements Dao<Venda> {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Vendas SET quantidadeVenda = ?, dataVenda = ?, valorVenda = ?, idCliente = ?, idProduto = ?, idVendedor = ?  WHERE ID = ? ");
-            sql.setString(1, venda.getQuantidadeVenda()); 
-            sql.setString(2, venda.getDataVenda());
-            sql.setString(3, venda.getValorVenda());
-            sql.setString(4, venda.getIdCliente());
-            sql.setString(5, venda.getIdProduto());
-            sql.setString(6, venda.getIdVendedor());
+            sql.setInt(1, venda.getQuantidadeVenda());
+            // sql.setString(2, venda.getDataVenda());
+            sql.setDouble(3, venda.getValorVenda());
+            sql.setInt(4, venda.getIdCliente());
+            sql.setInt(5, venda.getIdProduto());
+            sql.setInt(6, venda.getIdVendedor());
             sql.setInt(7, venda.getId());
             sql.executeUpdate();
 

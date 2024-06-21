@@ -21,19 +21,19 @@ public class CompraDAO implements Dao<Compra> {
         Conexao conexao = new Conexao();
         try {
             Compra compra = new Compra();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Compras WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM compras WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
             if (resultado != null) {
                 while (resultado.next()) {
                     compra.setId(Integer.parseInt(resultado.getString("ID")));
-                    compra.setQuantidadeCompra(resultado.getString("QUANTIDADE_COMPRA"));
-                    compra.setDataCompra(resultado.getString("DATA_COMPRA"));
-                    compra.setValorCompra(resultado.getString("VALOR_COMPRA"));
-                    compra.setIdFornecedor(resultado.getString("ID_FORNECEDOR"));
-                    compra.setIdProduto(resultado.getString("ID_PRODUTO"));
-                    compra.setIdComprador(resultado.getString("ID_COMPRADOR"));
+                    compra.setQuantidadeCompra(resultado.getInt("QUANTIDADE_COMPRA"));
+                    // compra.setDataCompra(resultado.getString("DATA_COMPRA"));
+                    compra.setValorCompra(resultado.getDouble("VALOR_COMPRA"));
+                    compra.setIdFornecedor(resultado.getInt("ID_FORNECEDOR"));
+                    compra.setIdProduto(resultado.getInt("ID_PRODUTO"));
+                    compra.setIdComprador(resultado.getInt("ID_COMPRADOR"));
                     
                 }
             }
@@ -51,13 +51,13 @@ public class CompraDAO implements Dao<Compra> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Compras (quantidadeCompra, dataCompra, valorCompra, idFornecedor, idProduto, idComprador ) VALUES (?,?,?,?,?,?)");
-            sql.setString(1, compra.getQuantidadeCompra());
-            sql.setString(2, compra.getDataCompra());
-            sql.setString(3, compra.getValorCompra());
-            sql.setString(4, compra.getIdFornecedor());
-            sql.setString(5, compra.getIdProduto());
-            sql.setString(6, compra.getIdComprador());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO compras (quantidade_compra, data_compra, valor_compra, id_fornecedor, id_produto, id_comprador ) VALUES (?,?,?,?,?,?)");
+            sql.setDouble(1, compra.getQuantidadeCompra());
+            // sql.setString(2, compra.getDataCompra());
+            sql.setDouble(3, compra.getValorCompra());
+            sql.setInt(4, compra.getIdFornecedor());
+            sql.setInt(5, compra.getIdProduto());
+            sql.setInt(6, compra.getIdComprador());
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de insert (comentario) incorreta");
@@ -75,13 +75,13 @@ public class CompraDAO implements Dao<Compra> {
     public void update(Compra compra) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Compras SET quantidadeCompra = ?, dataCompra = ?, valorCompra = ?, idFornecedor = ?, idProduto = ?, idComprador = ?  WHERE ID = ? ");
-            sql.setString(1, compra.getQuantidadeCompra());
-            sql.setString(2, compra.getDataCompra());
-            sql.setString(3, compra.getValorCompra());
-            sql.setString(4, compra.getIdFornecedor());
-            sql.setString(5, compra.getIdProduto());
-            sql.setString(6, compra.getIdComprador());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE compras SET quantidade_compra = ?, data_compra = ?, valor_compra = ?, id_fornecedor = ?, id_produto = ?, id_comprador = ?  WHERE ID = ? ");
+            sql.setDouble(1, compra.getQuantidadeCompra());
+            // sql.setString(2, compra.getDataCompra());
+            sql.setDouble(3, compra.getValorCompra());
+            sql.setInt(4, compra.getIdFornecedor());
+            sql.setInt(5, compra.getIdProduto());
+            sql.setInt(6, compra.getIdComprador());
             sql.setInt(7, compra.getId());
             sql.executeUpdate();
 
@@ -95,7 +95,7 @@ public class CompraDAO implements Dao<Compra> {
     public void delete(Compra compra) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Compras WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM compras WHERE ID = ? ");
             sql.setInt(1, compra.getId());
             sql.executeUpdate();
 

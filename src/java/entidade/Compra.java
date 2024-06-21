@@ -4,6 +4,8 @@
  */
 package entidade;
 
+import java.util.Calendar;
+
 /**
  *
  * @author vertigo
@@ -12,13 +14,13 @@ public class Compra {
 
     private int id;
     private int quantidadeCompra;
-    private String dataCompra;
+    private Calendar dataCompra;
     private double valorCompra;
     private int idFornecedor;
     private int idProduto;
     private int idComprador;
 
-    public Compra(int id, int quantidadeCompra, String dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
+    public Compra(int id, int quantidadeCompra, Calendar dataCompra, double valorCompra, int idFornecedor, int idProduto, int idComprador) {
         this.id = id;
         this.quantidadeCompra = quantidadeCompra;
         this.dataCompra = dataCompra;
@@ -31,7 +33,7 @@ public class Compra {
     public Compra() {
         this.id = 0;
         this.quantidadeCompra = 0;
-        this.dataCompra = "";
+        // this.dataCompra = "";
         this.valorCompra = 0;
         this.idFornecedor = 0;
         this.idProduto = 0;
@@ -46,7 +48,7 @@ public class Compra {
         return quantidadeCompra;
     }
 
-    public String getDataCompra() {
+    public Calendar getDataCompra() {
         return dataCompra;
     }
 
@@ -74,7 +76,7 @@ public class Compra {
         this.quantidadeCompra = quantidadeCompra;
     }
 
-    public void setDataCompra(String dataCompra) {
+    public void setDataCompra(Calendar dataCompra) {
         this.dataCompra = dataCompra;
     }
 
