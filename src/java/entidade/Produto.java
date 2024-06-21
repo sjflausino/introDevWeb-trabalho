@@ -105,4 +105,8 @@ public class Produto {
         this.idCategoria = idCategoria;
     }
 
+    public int getIdProdutodo() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

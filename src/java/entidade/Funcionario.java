@@ -15,15 +15,15 @@ public class Funcionario {
     private String cpf;
     private String senha;
     private String email;
-    private String tipo;
+    private String papel;
 
-    public Funcionario(int id, String nome, String cpf, String senha, String email, String tipo) {
+    public Funcionario(int id, String nome, String cpf, String senha, String email, String papel) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
         this.email = email;
-        this.tipo = tipo;
+        this.papel = papel;
     }
 
     public Funcionario() {
@@ -32,7 +32,7 @@ public class Funcionario {
         this.cpf = "";
         this.senha = "";
         this.email = "";
-        this.tipo = "";
+        this.papel = "";
     }
 
     public int getId() {
@@ -55,8 +55,8 @@ public class Funcionario {
         return email;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getPapel() {
+        return papel;
     }
 
     public void setId(int id) {
@@ -79,8 +79,8 @@ public class Funcionario {
         this.email = email;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setPapel(String papel) {
+        this.papel = papel;
     }
 
 }
