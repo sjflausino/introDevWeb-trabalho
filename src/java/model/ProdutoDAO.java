@@ -53,7 +53,7 @@ public class ProdutoDAO implements Dao<Produto> {
             sql.setInt(6, produto.getIdCategoria());
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (comentario) incorreta");
+            throw new RuntimeException("Query de insert (produto) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -61,7 +61,34 @@ public class ProdutoDAO implements Dao<Produto> {
 
     @Override
     public ArrayList<Produto> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<Produto> meusProdutos = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM produtos";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Produto produto = new Produto(
+                        resultado.getInt("ID"),
+                        resultado.getString("NOME_PRODUTO"),
+                        resultado.getString("DESCRICAO"),
+                        resultado.getDouble("PRECO_COMPRA"),
+                        resultado.getDouble("PRECO_VENDA"),
+                        resultado.getInt("QUANTIDADE_DISPONIVEL"),
+                        resultado.getString("LIBERADO_VENDA"),                                                
+                        resultado.getInt("ID_CATEGORIA")
+                    );
+                    meusProdutos.add(produto);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Query de select (GetAll - produto) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return meusProdutos;
     }
 
     @Override
@@ -80,7 +107,7 @@ public class ProdutoDAO implements Dao<Produto> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar comentario) incorreta");
+            throw new RuntimeException("Query de update (alterar produto) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -95,7 +122,7 @@ public class ProdutoDAO implements Dao<Produto> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException("Query de delete (produto) incorreta");
         } finally {
             conexao.closeConexao();
         }

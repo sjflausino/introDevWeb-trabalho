@@ -22,7 +22,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
                     fornecedor.setId(Integer.parseInt(resultado.getString("ID")));
                     fornecedor.setRazaoSocial(resultado.getString("RAZAO_SOCIAL"));
                     fornecedor.setCnpj(resultado.getString("CNPJ"));
-                    fornecedor.setEndereco(resultado.getString("ENDERECO"));;
+                    fornecedor.setEndereco(resultado.getString("ENDERECO"));
                     fornecedor.setBairro(resultado.getString("BAIRRO"));
                     fornecedor.setCidade(resultado.getString("CIDADE"));
                     fornecedor.setUf(resultado.getString("UF"));
@@ -57,7 +57,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
             sql.setString(9, fornecedor.getEmail());
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (comentario) incorreta");
+            throw new RuntimeException("Query de insert (fornecedor) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -65,7 +65,38 @@ public class FornecedorDAO implements Dao<Fornecedor> {
 
     @Override
     public ArrayList<Fornecedor> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        ArrayList<Fornecedor> meusFornecedores = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM fornecedores";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Fornecedor fornecedor = new Fornecedor(
+                        resultado.getInt("ID"),
+                        resultado.getString("RAZAO_SOCIAL"),
+                        resultado.getString("CNPJ"),
+                        resultado.getString("ENDERECO"),
+                        resultado.getString("BAIRRO"),
+                        resultado.getString("CIDADE"),
+                        resultado.getString("UF"),
+                        resultado.getString("CEP"),
+                        resultado.getString("TELEFONE"),
+                        resultado.getString("EMAIL")
+                    );
+                    meusFornecedores.add(fornecedor);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Query de select (GetAll - fornecedores) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return meusFornecedores;
+
     }
 
     @Override
@@ -86,7 +117,7 @@ public class FornecedorDAO implements Dao<Fornecedor> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar comentario) incorreta");
+            throw new RuntimeException("Query de update (alterar fornecedor) incorreta");
         } finally {
             conexao.closeConexao();
         }

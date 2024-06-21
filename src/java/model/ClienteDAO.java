@@ -57,7 +57,7 @@ public class ClienteDAO implements Dao<Cliente> {
             sql.setString(9, cliente.getEmail());
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (comentario) incorreta");
+            throw new RuntimeException("Query de insert (cliente) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -65,7 +65,38 @@ public class ClienteDAO implements Dao<Cliente> {
 
     @Override
     public ArrayList<Cliente> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        ArrayList<Cliente> meusClientes = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM clientes";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Cliente cliente = new Cliente(
+                        resultado.getInt("ID"),
+                        resultado.getString("NOME"),
+                        resultado.getString("CPF"),
+                        resultado.getString("ENDERECO"),
+                        resultado.getString("BAIRRO"),
+                        resultado.getString("CIDADE"),
+                        resultado.getString("UF"),
+                        resultado.getString("CEP"),
+                        resultado.getString("TELEFONE"),
+                        resultado.getString("EMAIL")
+                    );
+                    meusClientes.add(cliente);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Query de select (GetAll - clientes) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return meusClientes;
+
     }
 
     @Override
@@ -86,7 +117,7 @@ public class ClienteDAO implements Dao<Cliente> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar comentario) incorreta");
+            throw new RuntimeException("Query de update (alterar cliente) incorreta");
         } finally {
             conexao.closeConexao();
         }

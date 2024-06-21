@@ -49,7 +49,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
             sql.setString(5, funcionario.getPapel());
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de insert (comentario) incorreta");
+            throw new RuntimeException("Query de insert (funcionario) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -57,7 +57,32 @@ public class FuncionarioDAO implements Dao<Funcionario> {
 
     @Override
     public ArrayList<Funcionario> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<Funcionario> meusFuncionarios = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM compras";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Funcionario Funcionario = new Funcionario(
+                        resultado.getInt("ID"),
+                        resultado.getString("NOME"),
+                        resultado.getString("CPF"),
+                        resultado.getString("SENHA"),
+                        resultado.getString("EMAIL"),
+                        resultado.getString("PAPEL")
+                    );
+                    meusFuncionarios.add(Funcionario);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Query de select (GetAll - funcionarios) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return meusFuncionarios;
     }
 
     @Override
@@ -74,7 +99,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de update (alterar comentario) incorreta");
+            throw new RuntimeException("Query de update (alterar funcionario) incorreta");
         } finally {
             conexao.closeConexao();
         }
@@ -89,7 +114,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Query de delete (excluir) incorreta");
+            throw new RuntimeException("Query de delete (funcionario) incorreta");
         } finally {
             conexao.closeConexao();
         }
