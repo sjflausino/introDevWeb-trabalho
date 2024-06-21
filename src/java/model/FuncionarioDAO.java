@@ -21,7 +21,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
         Conexao conexao = new Conexao();
         try {
             Funcionario funcionario = new Funcionario();
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Funcionarios WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM funcionarios WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
@@ -32,7 +32,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
                     funcionario.setCpf(resultado.getString("CPF"));
                     funcionario.setSenha(resultado.getString("SENHA"));
                     funcionario.setEmail(resultado.getString("EMAIL"));
-                    funcionario.setTipo(resultado.getString("TIPO"));
+                    funcionario.setPapel(resultado.getString("PAPEL"));
                 }
             }
             return funcionario;
@@ -49,16 +49,12 @@ public class FuncionarioDAO implements Dao<Funcionario> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Funcionarios (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?,?,?,?,?)");
-            // sql.setString(1, funcionario.getNome());
-            // sql.setString(2, funcionario.getCpf());
-            // sql.setString(3, funcionario.getEndereco());
-            // sql.setString(4, funcionario.getBairro());
-            // sql.setString(5, funcionario.getCidade());
-            // sql.setString(6, funcionario.getUf());
-            // sql.setString(7, funcionario.getCep());
-            // sql.setString(8, funcionario.getTelefone());
-            // sql.setString(9, funcionario.getEmail());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO funcionarios (nome, cpf, senha,email, papel) VALUES (?,?,?,?,?,?,?,?)");
+            sql.setString(1, funcionario.getNome());
+            sql.setString(2, funcionario.getCpf());
+            sql.setString(3, funcionario.getSenha());
+            sql.setString(4, funcionario.getEmail());
+            sql.setString(5, funcionario.getPapel());
 
         } catch (SQLException e) {
             throw new RuntimeException("Query de insert (comentario) incorreta");
@@ -76,17 +72,13 @@ public class FuncionarioDAO implements Dao<Funcionario> {
     public void update(Funcionario funcionario) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Funcionarios SET nome = ?, cpf = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ? ");
-            // sql.setString(1, funcionario.getNome());
-            // sql.setString(2, funcionario.getCpf());
-            // sql.setString(3, funcionario.getEndereco());
-            // sql.setString(4, funcionario.getBairro());
-            // sql.setString(5, funcionario.getCidade());
-            // sql.setString(6, funcionario.getUf());
-            // sql.setString(7, funcionario.getCep());
-            // sql.setString(8, funcionario.getTelefone());
-            // sql.setString(9, funcionario.getEmail());
-            // sql.setInt(10, funcionario.getId());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE funcionarios SET nome = ?, cpf = ?, senha = ?, papel = ?  WHERE ID = ? ");
+            sql.setString(1, funcionario.getNome());
+            sql.setString(2, funcionario.getCpf());
+            sql.setString(3, funcionario.getSenha());
+            sql.setString(4, funcionario.getPapel());
+            sql.setInt(5, funcionario.getId());
+
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -99,7 +91,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
     public void delete(Funcionario funcionario) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Funcionarios WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM funcionarios WHERE ID = ? ");
             sql.setInt(1, funcionario.getId());
             sql.executeUpdate();
 
