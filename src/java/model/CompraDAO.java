@@ -22,10 +22,10 @@ public class CompraDAO implements Dao<Compra> {
                     compra.setId(Integer.parseInt(resultado.getString("ID")));
                     compra.setQuantidadeCompra(resultado.getInt("QUANTIDADE_COMPRA"));
                     // compra.setDataCompra(resultado.getString("DATA_COMPRA"));
-                    compra.setValorCompra(resultado.getDouble("VALOR_COMPRA"));
-                    compra.setIdFornecedor(resultado.getInt("ID_FORNECEDOR"));
-                    compra.setIdProduto(resultado.getInt("ID_PRODUTO"));
-                    compra.setIdComprador(resultado.getInt("ID_COMPRADOR"));
+                    compra.setValorCompra(Double.parseDouble(resultado.getString("VALOR_COMPRA")));
+                    compra.setIdFornecedor(Integer.parseInt(resultado.getString("ID_FORNECEDOR")));
+                    compra.setIdProduto(Integer.parseInt(resultado.getString("ID_PRODUTO")));
+                    compra.setIdComprador(Integer.parseInt(resultado.getString("ID_COMPRADOR")));
 
                 }
             }
