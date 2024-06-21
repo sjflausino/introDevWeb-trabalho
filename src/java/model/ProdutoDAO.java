@@ -87,11 +87,11 @@ public class ProdutoDAO implements Dao<Produto> {
     }
 
     @Override
-    public void delete(Produto produto) {
+    public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM produtos WHERE ID = ? ");
-            sql.setInt(1, produto.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -99,10 +99,5 @@ public class ProdutoDAO implements Dao<Produto> {
         } finally {
             conexao.closeConexao();
         }
-    }
-
-    @Override
-    public void delete(int id) {
-        // TODO
     }
 }

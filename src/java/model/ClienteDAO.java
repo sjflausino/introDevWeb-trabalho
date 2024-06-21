@@ -92,11 +92,12 @@ public class ClienteDAO implements Dao<Cliente> {
         }
     }
 
-    public void delete(Cliente cliente) {
+    @Override
+    public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM clientes WHERE ID = ? ");
-            sql.setInt(1, cliente.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -104,10 +105,5 @@ public class ClienteDAO implements Dao<Cliente> {
         } finally {
             conexao.closeConexao();
         }
-    }
-
-    @Override
-    public void delete(int id) {
-        // TODO
     }
 }

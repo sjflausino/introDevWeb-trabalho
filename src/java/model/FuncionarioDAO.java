@@ -80,11 +80,12 @@ public class FuncionarioDAO implements Dao<Funcionario> {
         }
     }
 
-    public void delete(Funcionario funcionario) {
+    @Override
+    public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM funcionarios WHERE ID = ? ");
-            sql.setInt(1, funcionario.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -94,8 +95,5 @@ public class FuncionarioDAO implements Dao<Funcionario> {
         }
     }
 
-    @Override
-    public void delete(int id) {
-        // TODO
-    }
+ 
 }

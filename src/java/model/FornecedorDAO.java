@@ -92,11 +92,12 @@ public class FornecedorDAO implements Dao<Fornecedor> {
         }
     }
 
-    public void delete(Fornecedor fornecedor) {
+    @Override
+    public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM fornecedores WHERE ID = ? ");
-            sql.setInt(1, fornecedor.getId());
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -104,10 +105,5 @@ public class FornecedorDAO implements Dao<Fornecedor> {
         } finally {
             conexao.closeConexao();
         }
-    }
-
-    @Override
-    public void delete(int id) {
-        // TODO
     }
 }

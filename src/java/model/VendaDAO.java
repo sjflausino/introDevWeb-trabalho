@@ -83,11 +83,12 @@ public class VendaDAO implements Dao<Venda> {
         }
     }
 
-    public void delete(Venda venda) {
+    @Override
+    public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Vendas WHERE ID = ? ");
-            sql.setInt(1, venda.getId());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM vendas WHERE ID = ? ");
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -95,10 +96,5 @@ public class VendaDAO implements Dao<Venda> {
         } finally {
             conexao.closeConexao();
         }
-    }
-
-    @Override
-    public void delete(int id) {
-        // TODO
     }
 }
