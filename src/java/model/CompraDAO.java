@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import entidade.Compra;
@@ -10,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author vertigo
- */
 public class CompraDAO implements Dao<Compra> {
 
     @Override
@@ -34,7 +26,7 @@ public class CompraDAO implements Dao<Compra> {
                     compra.setIdFornecedor(resultado.getInt("ID_FORNECEDOR"));
                     compra.setIdProduto(resultado.getInt("ID_PRODUTO"));
                     compra.setIdComprador(resultado.getInt("ID_COMPRADOR"));
-                    
+
                 }
             }
             return compra;
